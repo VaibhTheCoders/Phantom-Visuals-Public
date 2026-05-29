@@ -11,7 +11,7 @@ jobs:
       - name: 🕵️‍♂️ Clone Private Brain (Repo A)
         uses: actions/checkout@v4
         with:
-          # YAHAN APNA USERNAME DAALNA MAT BHOOLNA (e.g., VaibhavRaj/Phantom-Engine-Private)
+          # YAHAN APNA USERNAME DAALNA MAT BHOOLNA
           repository: VaibhTheCoders/Phantom-Engine-Private 
           token: ${{ secrets.PAT_TOKEN }}
 
@@ -20,12 +20,10 @@ jobs:
         with:
           node-version: '18'
 
-      # --- YEH NAYA STEP ADD KIYA HAI THE FIX KE LIYE ---
       - name: 🎥 Install FFmpeg in Cloud PC
         run: |
           sudo apt-get update
           sudo apt-get install -y ffmpeg
-      # ------------------------------------------------
 
       - name: 📥 Download Assets & Render Video 🚀
         env:
@@ -40,4 +38,4 @@ jobs:
           echo "Starting render for Chat ID: $CHAT_ID"
           echo "Settings: $SETTINGS"
           npm install
-          npm run build-video
+          npm run render
