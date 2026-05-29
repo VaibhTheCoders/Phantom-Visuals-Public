@@ -1,0 +1,36 @@
+name: Phantom Ghost Render Engine
+
+on:
+  repository_dispatch:
+    types: [trigger_render]
+
+jobs:
+  render_video:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🕵️‍♂️ Clone Private Brain (Repo A)
+        uses: actions/checkout@v4
+        with:
+          # YAHAN APNA USERNAME DAALNA:
+          repository: VaibhTheCoders/Phantom-Engine-Private 
+          token: ${{ secrets.PAT_TOKEN }}
+
+      - name: ⚙️ Setup Node.js Engine
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: 📥 Download Assets & Render Video 🚀
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELE_BOT_TOKEN }}
+          CHAT_ID: ${{ github.event.client_payload.chat_id }}
+          RATIO: ${{ github.event.client_payload.ratio }}
+          BG_ID: ${{ github.event.client_payload.bg_id }}
+          LOGO_ID: ${{ github.event.client_payload.logo_id }}
+          AUDIO_ID: ${{ github.event.client_payload.audio_id }}
+          SETTINGS: ${{ toJson(github.event.client_payload.settings) }}
+        run: |
+          echo "Starting render for Chat ID: $CHAT_ID"
+          echo "Settings: $SETTINGS"
+          npm install
+          npm run build-video
