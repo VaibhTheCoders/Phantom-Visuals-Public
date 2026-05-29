@@ -11,14 +11,21 @@ jobs:
       - name: 🕵️‍♂️ Clone Private Brain (Repo A)
         uses: actions/checkout@v4
         with:
-          # YAHAN APNA USERNAME DAALNA:
-          repository: VaibhTheCoders/Phantom-Engine-Private 
+          # YAHAN APNA USERNAME DAALNA MAT BHOOLNA (e.g., VaibhavRaj/Phantom-Engine-Private)
+          repository: TumharaUsername/Phantom-Engine-Private 
           token: ${{ secrets.PAT_TOKEN }}
 
       - name: ⚙️ Setup Node.js Engine
         uses: actions/setup-node@v4
         with:
           node-version: '18'
+
+      # --- YEH NAYA STEP ADD KIYA HAI THE FIX KE LIYE ---
+      - name: 🎥 Install FFmpeg in Cloud PC
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+      # ------------------------------------------------
 
       - name: 📥 Download Assets & Render Video 🚀
         env:
