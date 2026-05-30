@@ -29,6 +29,7 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELE_BOT_TOKEN }}
           CHAT_ID: ${{ github.event.client_payload.chat_id }}
+          MESSAGE_ID: ${{ github.event.client_payload.message_id }}  # 🚀 THE LIVE PROGRESS BAR FIX
           RATIO: ${{ github.event.client_payload.ratio }}
           BG_ID: ${{ github.event.client_payload.bg_id }}
           LOGO_ID: ${{ github.event.client_payload.logo_id }}
